@@ -1,0 +1,131 @@
+<!doctype html>
+
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Game Show Case</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1: #0f1720; /* dark base */
+      --accent1: #00c853; /* neon green */
+      --accent2: #ff6d00; /* neon orange */
+      --card: rgba(255,255,255,0.04);
+      --glass: rgba(255,255,255,0.03);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: 'Roboto', Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(0,200,83,0.06), transparent), radial-gradient(1000px 500px at 90% 90%, rgba(255,109,0,0.06), transparent), var(--bg1);
+      color:#e6f7ef;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    .container{max-width:1100px;margin:36px auto;padding:22px}header{display:flex;align-items:center;gap:18px}
+.logo img{
+  width:96px;height:96px;border-radius:16px;background:linear-gradient(135deg,var(--accent1),var(--accent2));
+  display:flex;align-items:center;justify-content:center;font-family:'Press Start 2P';font-size:12px;color:#07110a;box-shadow:0 6px 18px rgba(0,0,0,0.6);
+}
+.title{font-family:'Press Start 2P';font-size:18px}
+.subtitle{font-size:12px;color:#cfead6;margin-top:6px}
+
+.main{
+  margin-top:20px;display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start
+}
+
+/* Left column (media + description) */
+.left{background:var(--card);padding:18px;border-radius:12px;backdrop-filter: blur(6px);}
+.media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.media-grid img{width:100%;height:140px;object-fit:cover;border-radius:10px;border:2px solid rgba(255,255,255,0.04)}
+.video-wrap{margin-top:14px;border-radius:10px;overflow:hidden;border:2px solid rgba(255,255,255,0.04)}
+video{width:100%;height:320px;background:#000;display:block}
+.desc{margin-top:12px;font-size:13px;line-height:1.4;color:#dff8e6}
+
+/* Right column (pay area) */
+.right{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+.scan-box{display:flex;flex-direction:column;align-items:center;gap:12px;padding:14px;background:var(--glass);border-radius:10px}
+.barcode{width:220px;height:220px;background:linear-gradient(180deg,#fff,#eee);display:flex;align-items:center;justify-content:center;border-radius:8px;overflow:hidden}
+.barcode img{width:100%;height:100%;object-fit:contain}
+.scan-label{font-family:'Press Start 2P';font-size:11px;color:var(--accent1)}
+.pay-info{width:100%;margin-top:12px;padding:12px;border-radius:10px;background:rgba(0,0,0,0.25);border:1px dashed rgba(255,255,255,0.03)}
+.pay-line{display:flex;justify-content:space-between;align-items:center;font-size:14px}
+.email{font-weight:700;color:#fff}
+.gpay{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:8px 10px;border-radius:8px;font-weight:700;font-size:13px;color:#07110a}
+
+footer{margin-top:18px;text-align:center;font-size:12px;color:#bfeecd}
+
+/* small screens */
+@media (max-width:900px){
+  .main{grid-template-columns:1fr;}
+  .video-wrap video{height:220px}
+  .barcode{width:180px;height:180px}
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo" id="logo"><img src="logo/Aventura Mágica_ Encuentra la Llave.png"></div>
+      <div>
+        <div class="title">[FIND KEY]</div>
+        <div class="subtitle">High-octane arcade • Neon battleground • Ready to play</div>
+      </div>
+    </header><main class="main">
+  <section class="left">
+    <div class="media-grid">
+      <!-- Replace src with your images -->
+      <img id="img1" src="/img/player.jpg" alt="Image 1">
+      <img id="img2" src="/img/player_enemy.jpg" alt="Image 2">
+      <img id="img3" src="/img/player_key.jpg" alt="Image 3">
+    </div>
+
+    <div class="video-wrap">
+      <!-- Replace src with your mp4 video -->
+      <video id="promoVideo" controls poster="https://via.placeholder.com/800x450?text=Video+Poster">
+        <source src="/video/intro.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <p class="desc">He’s trapped in a world that no longer feels alive.
+All he wants is freedom… to breathe, to laugh, to feel the joy he’s been missing.
+But he can’t do it alone.
+
+Step into his shoes. Explore, fight, and find a way out.
+Your courage might be the only thing that can set him free.</p>
+  </section>
+
+  <aside class="right">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <div style="font-weight:800">Buy & Download</div>
+      <div style="font-size:13px;color:#cfead6">Price: ₹50</div>
+    </div>
+    <div>This price help me know your support for the game development. Thank you!</div>
+
+    <div class="scan-box" style="margin-top:12px">
+      <div class="scan-label">SCAN TO PAY</div>
+      <div class="barcode" id="barcode">
+        <!-- Replace this image with your UPI QR / barcode image -->
+        <img src="/qr scan/scan.png" alt="UPI QR">
+      </div>
+      <div style="font-size:12px;color:#dff8e6;">Open your UPI app and scan the code to pay</div>
+    </div>
+
+    <div class="pay-info">
+      <div class="pay-line">
+        <div class="email" id="email">your.email@example.com</div>
+        <div class="gpay">Google Pay</div>
+      </div>
+      <div style="margin-top:8px;font-size:12px;color:#cfead6">After completing the payment, please send your email ID in Google Pay to receive the app download link.</div>
+    </div>
+
+  </aside>
+</main>
+
+<footer>Tip: Carefully send email ID.</footer>
+  </div>
+  </body>
+</html>
